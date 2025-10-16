@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(point_sampler-root VERSION 0.0.0)
+project(point_sampler-root VERSION 0.1.0)
 
 # --- global setup
 
