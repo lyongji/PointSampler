@@ -1,2 +1,0 @@
-add_executable(test_point_sampler_examples main.cpp)
-target_link_libraries(test_point_sampler_examples point_sampler)
