@@ -66,6 +66,23 @@ block random_walk_with_thickness:
     persistence=0.8, gaussianSigma=0.02, gaussianSamples=3)
   doAssert pts.len >= 5
 
+block random_walk_zero_filaments:
+  let pts = randomWalkFilaments[float, 2](0, 10, 0.1,
+    [(0.0, 1.0), (0.0, 1.0)], some(uint32(42)))
+  doAssert pts.len == 0
+
+block random_walk_no_thickness_explicit:
+  let pts = randomWalkFilaments[float, 2](2, 5, 0.1,
+    [(0.0, 1.0), (0.0, 1.0)], some(uint32(42)),
+    persistence=0.8, gaussianSigma=0.0, gaussianSamples=0)
+  doAssert pts.len == 10
+
+block random_walk_3d:
+  # 3D walk: core points may drift outside ranges (no clipping)
+  let pts = randomWalkFilaments[float, 3](1, 10, 0.2,
+    [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0)], some(uint32(7)))
+  doAssert pts.len == 10
+
 block relaxation_uniformity:
   var pts = @[
     initPoint[float, 2]([0.0, 0.0]),

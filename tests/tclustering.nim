@@ -60,6 +60,27 @@ block dbscan_basic:
   # far point might be noise or different cluster
   doAssert labels[3] != labels[0]
 
+block dbscan_all_noise:
+  # All points far apart → all noise
+  let pts = @[
+    initPoint[float, 2]([0.0, 0.0]),
+    initPoint[float, 2]([0.5, 0.0]),
+    initPoint[float, 2]([0.0, 0.5]),
+  ]
+  let labels = dbscanClustering(pts, 0.01, 2)
+  for l in labels:
+    doAssert l == -1, "isolated points should be noise"
+
+block dbscan_single_cluster:
+  let pts = @[
+    initPoint[float, 2]([0.0, 0.0]),
+    initPoint[float, 2]([0.02, 0.0]),
+    initPoint[float, 2]([0.04, 0.0]),
+  ]
+  let labels = dbscanClustering(pts, 0.1, 2)
+  for l in labels:
+    doAssert l == 0, "close points → one cluster"
+
 block dbscan_empty:
   let labels = dbscanClustering[float, 2](@[], 0.1, 3)
   doAssert labels.len == 0
@@ -73,6 +94,33 @@ block percolation_basic:
   let labels = percolationClustering(pts, 0.1)
   doAssert labels[0] == labels[1], "close points should be connected"
   doAssert labels[0] != labels[2], "far point should be separate"
+
+block percolation_all_connected:
+  let pts = @[
+    initPoint[float, 2]([0.0, 0.0]),
+    initPoint[float, 2]([0.05, 0.0]),
+    initPoint[float, 2]([0.1, 0.0]),
+  ]
+  let labels = percolationClustering(pts, 0.1)
+  doAssert labels[0] == labels[1]
+  doAssert labels[0] == labels[2]
+
+block percolation_single_point:
+  let pts = @[initPoint[float, 2]([0.5, 0.5])]
+  let labels = percolationClustering(pts, 0.1)
+  doAssert labels.len == 1
+  doAssert labels[0] == 0
+
+block kmeans_float32:
+  let pts = @[
+    initPoint[float32, 2]([0f, 0f]),
+    initPoint[float32, 2]([0.1f, 0.1f]),
+    initPoint[float32, 2]([0.9f, 0.9f]),
+    initPoint[float32, 2]([1f, 1f]),
+  ]
+  let (centroids, labels) = kmeansClustering(pts, 2)
+  doAssert centroids.len == 2
+  doAssert labels.len == 4
 
 block percolation_empty:
   let labels = percolationClustering[float, 2](@[], 0.1)

@@ -17,7 +17,7 @@ block nearest_neighbors_basic:
     doAssert n.len == 2
 
 block first_neighbor_distance:
-  var pts = @[
+  let pts = @[
     initPoint[float, 2]([0.0, 0.0]),
     initPoint[float, 2]([0.01, 0.0]),
     initPoint[float, 2]([0.5, 0.5]),
@@ -68,5 +68,20 @@ block angle_distribution:
   let (angles, gTheta) = angleDistributionNeighbors(pts, 0.2, 3)
   doAssert angles.len > 0
   doAssert gTheta.len > 0
+
+block first_neighbor_one_point:
+  # Edge case: single point has no neighbor → returns high(T)
+  let pts = @[initPoint[float, 2]([0.0, 0.0])]
+  let dSq = firstNeighborDistanceSquared(pts)
+  doAssert dSq.len == 1
+  doAssert dSq[0] == high(float)
+
+block radial_distribution_empty:
+  let (radii, g) = radialDistribution[float, 2](
+    @[], [(0.0, 1.0), (0.0, 1.0)], 0.1, 1.0)
+  doAssert radii.len > 0
+  doAssert g.len > 0
+  for v in g:
+    doAssert v == 0.0
 
 echo "  ✓ metrics tests"

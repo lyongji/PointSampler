@@ -14,8 +14,7 @@ proc randomWalkFilaments*[T; N: static[int]](
     seed: Option[uint32] = none[uint32]();
     persistence: T = 0.8.T;
     gaussianSigma: T = 0.T;
-    gaussianSamples: int = 0;
-    pDistances: ptr seq[T] = nil): seq[Point[T, N]] =
+    gaussianSamples: int = 0): seq[Point[T, N]] =
   ## 生成随机游走纤维点集。
   ##
   ## 每条纤维从随机起点开始，逐步游走。方向受持续性因子控制：
@@ -30,7 +29,6 @@ proc randomWalkFilaments*[T; N: static[int]](
   ## - `persistence` — 方向持续性 [0, 1]，默认 0.8
   ## - `gaussianSigma` — 高斯散布标准差（0 = 无散布）
   ## - `gaussianSamples` — 每步的散布样本数
-  ## - `pDistances` — 可选输出：各点到纤维中心线的距离
   ##
   ## 示例:
   ## ```nim
@@ -41,26 +39,17 @@ proc randomWalkFilaments*[T; N: static[int]](
   var rng = if seed.isSome: initRand(int64(seed.get)) else: initRand()
   let cap = nFilaments * filamentCount * (1 + gaussianSamples)
   result = newSeqOfCap[Point[T, N]](cap)
-  if pDistances != nil:
-    pDistances[] = newSeqOfCap[T](cap)
   for f in 0 ..< nFilaments:
     var p: Point[T, N]
     for d in 0 ..< N:
       let (lo, hi) = ranges[d]
       p[d] = lo + rng.rand(1.0).T * (hi - lo)
-    var dir: array[N, T]
-    var norm: T = 0
+    var dir = Point[T, N]()
     for d in 0 ..< N:
       dir[d] = rng.gauss(0.0.T, 1.0.T)
-      norm += dir[d] * dir[d]
-    norm = sqrt(norm)
-    if norm > 0:
-      for d in 0 ..< N:
-        dir[d] /= norm
+    dir = normalized(dir)
     for i in 0 ..< filamentCount:
       result.add p
-      if pDistances != nil:
-        pDistances[].add(0.T)
       for g in 0 ..< gaussianSamples:
         var q = p
         var dist2: T = 0
@@ -75,25 +64,10 @@ proc randomWalkFilaments*[T; N: static[int]](
             break
         if inside:
           result.add q
-          if pDistances != nil:
-            pDistances[].add(sqrt(dist2))
-      var rnd: array[N, T]
-      var rn: T = 0
+      var rnd = Point[T, N]()
       for d in 0 ..< N:
         rnd[d] = -1.T + rng.rand(2.0).T
-        rn += rnd[d] * rnd[d]
-      rn = sqrt(rn)
-      if rn > 0:
-        for d in 0 ..< N:
-          rnd[d] /= rn
-      for d in 0 ..< N:
-        dir[d] = persistence * dir[d] + (1.T - persistence) * rnd[d]
-      var dn: T = 0
-      for d in 0 ..< N:
-        dn += dir[d] * dir[d]
-      dn = sqrt(dn)
-      if dn > 0:
-        for d in 0 ..< N:
-          dir[d] /= dn
-      for d in 0 ..< N:
-        p[d] += stepSize * dir[d]
+      rnd = normalized(rnd)
+      dir = persistence * dir + (1.T - persistence) * rnd
+      dir = normalized(dir)
+      p = p + dir * stepSize

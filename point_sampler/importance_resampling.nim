@@ -4,7 +4,7 @@
 ## 适合从任意密度函数中生成服从分布的样本。
 ## 对应 C++ 版 `ps::importance_resampling<T,N>()`。
 
-import std/[algorithm, math, random, options]
+import std/[algorithm, math, random, options, sequtils]
 import point
 import halton
 
@@ -34,9 +34,7 @@ proc importanceResampling*[T; N: static[int]](
   var rng = if seed.isSome: initRand(int64(seed.get)) else: initRand()
   let nGrid = count * oversamplingRatio
   let gridPoints = halton.halton[T, N](nGrid, axisRanges, seed)
-  var weights = newSeq[T](nGrid)
-  for i, p in gridPoints:
-    weights[i] = densityFn(p)
+  var weights = gridPoints.mapIt(densityFn(it))
   let wSum = sum(weights)
   if wSum > 0:
     for w in mitems(weights): w /= wSum
@@ -49,4 +47,4 @@ proc importanceResampling*[T; N: static[int]](
   for _ in 0 ..< count:
     let u = rng.rand(1.0).T
     let idx = cdf.upperBound(u)
-    result.add gridPoints[min(idx, nGrid - 1)]
+    result.add gridPoints[if idx < nGrid: idx else: nGrid - 1]

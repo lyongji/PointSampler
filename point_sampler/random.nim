@@ -22,14 +22,13 @@ proc random*[T; N: static[int]](count: int; axisRanges: array[N, (T, T)];
   var rng: Rand
   if seed.isSome: rng = initRand(int64(seed.get))
   else: rng = initRand()
-  var dists: array[N, tuple[a, b: T]]
   for i in 0 ..< N:
     let (lo, hi) = axisRanges[i]
-    dists[i] = (lo, hi)
+    doAssert lo <= hi, "random: axis range min > max"
   result = newSeqOfCap[Point[T, N]](count)
   for _ in 0 ..< count:
     var p: Point[T, N]
     for j in 0 ..< N:
-      let (lo, hi) = dists[j]
+      let (lo, hi) = axisRanges[j]
       p[j] = lo + T(rng.rand(1.0)) * (hi - lo)
     result.add p

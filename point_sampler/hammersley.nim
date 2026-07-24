@@ -6,15 +6,15 @@
 
 import std/[math, options]
 import point, range
+import internal/primes
 
 func hammersleySequence[T; N: static[int]](count, shift: int): seq[Point[T, N]] =
   ## 生成 Hammersley 序列（内部函数，点位于 [0,1]^N）。
-  const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
   result = newSeq[Point[T, N]](count)
   for i in 0 ..< count:
     result[i][0] = i.T / count.T
     for d in 1 ..< N:
-      let base = primes[min(primes.high, d - 1)]
+      let base = Primes[min(Primes.high, d - 1)]
       var n = i + shift
       var q = 0.0.T
       var bk = 1.0.T / base.T

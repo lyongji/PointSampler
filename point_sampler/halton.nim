@@ -6,15 +6,15 @@
 
 import std/[math, options]
 import point, range
+import internal/primes
 
 func haltonSequence[T; N: static[int]](count, shift: int): seq[Point[T, N]] =
   ## 生成 Halton 序列（内部函数，点位于 [0,1]^N）。
-  const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
   result = newSeq[Point[T, N]](count)
   for i in 0 ..< count:
     for d in 0 ..< N:
       var idx = i + 1 + shift
-      let base = primes[min(primes.high, d)]
+      let base = Primes[min(Primes.high, d)]
       var f = 1.0.T
       var val = 0.0.T
       while idx > 0:

@@ -5,4 +5,3 @@ nimcache/
 tests/*
 !tests/*.nim
 !tests/config.nims
-src/bindings/generate_bindings

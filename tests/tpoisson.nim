@@ -66,4 +66,22 @@ block poisson_weibull_min_dist:
     some(uint32(42)), 50)
   doAssert pts.len > 0
 
+block poisson_3d:
+  let pts = poissonDiskSamplingUniform[float, 3](
+    50, [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0)], 0.2,
+    some(uint32(42)))
+  doAssert pts.len > 0
+  for p in pts:
+    doAssert p[0] >= 0.0 and p[0] <= 1.0
+    doAssert p[2] >= 0.0 and p[2] <= 1.0
+
+block poisson_deterministic:
+  let a = poissonDiskSamplingUniform[float, 2](
+    30, [(0.0, 1.0), (0.0, 1.0)], 0.15, some(uint32(123)))
+  let b = poissonDiskSamplingUniform[float, 2](
+    30, [(0.0, 1.0), (0.0, 1.0)], 0.15, some(uint32(123)))
+  doAssert a.len == b.len
+  for i in 0 ..< a.len:
+    doAssert a[i] == b[i]
+
 echo "  ✓ Poisson disk tests"

@@ -3,7 +3,7 @@
 ## 提供轴对齐包围盒过滤、函数过滤、线性重映射和范围缩放工具函数。
 ## 对应 C++ 版 `ps::range.hpp`。
 
-import std/math
+import std/[math, sequtils]
 import point
 
 proc filterPointsInRange*[T; N: static[int]](
@@ -26,9 +26,7 @@ proc filterPointsFunction*[T; N: static[int]](
     points: openArray[Point[T, N]];
     fn: proc(p: Point[T, N]): T): seq[Point[T, N]] =
   ## 使用用户提供的函数过滤点。保留 `fn(p) != 0` 的点。
-  result = newSeqOfCap[Point[T, N]](points.len)
-  for p in points:
-    if fn(p) != 0.T: result.add p
+  points.filterIt(fn(it) != 0.T)
 
 func refitPointsToRange*[T; N: static[int]](
     points: var seq[Point[T, N]];

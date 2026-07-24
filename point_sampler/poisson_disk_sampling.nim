@@ -81,12 +81,14 @@ proc genRandomPointAround[T; N: static[int]](
     rng: var Rand;
     scaleFn: proc(p: Point[T, N]): T): Point[T, N] =
   let scaled = scaleFn(center) * baseMinDist
-  var dir: array[N, T]; var norm: T = 0
-  for d in 0 ..< N:
-    dir[d] = rng.gauss(0.0.T, 1.0.T); norm += dir[d] * dir[d]
+  var dir: array[N, T]; var norm: T
+  while true:
+    norm = 0
+    for d in 0 ..< N:
+      dir[d] = rng.gauss(0.0.T, 1.0.T); norm += dir[d] * dir[d]
+    if norm > 0: break
   norm = sqrt(norm)
-  if norm > 0:
-    for d in 0 ..< N: dir[d] /= norm
+  for d in 0 ..< N: dir[d] /= norm
   let r = scaled + rng.rand(1.0).T * scaled
   for d in 0 ..< N: result[d] = center[d] + dir[d] * r
 

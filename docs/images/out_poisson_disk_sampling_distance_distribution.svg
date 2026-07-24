@@ -1,0 +1,99 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'>
+<style>text{font-family:sans-serif;font-size:11px;fill:#eeeeee}.title{font-size:16px;font-weight:bold}.label{fill:#eeeeee;opacity:.7}</style>
+<rect width='600' height='400' fill='#1a1a2e' rx='8'/>
+<text x='300' y='28' text-anchor='middle' class='title'>距离分布泊松盘</text>
+<line x1='60' y1='340' x2='540' y2='340' stroke='#eeeeee' opacity='.3'/>
+<line x1='60' y1='60' x2='60' y2='340' stroke='#eeeeee' opacity='.3'/>
+<text x='60.0' y='356' text-anchor='middle' class='label'>0.00</text>
+<text x='52' y='344.0' text-anchor='end' class='label'>0.00</text>
+<text x='156.0' y='356' text-anchor='middle' class='label'>0.20</text>
+<text x='52' y='288.0' text-anchor='end' class='label'>0.20</text>
+<text x='252.0' y='356' text-anchor='middle' class='label'>0.40</text>
+<text x='52' y='232.0' text-anchor='end' class='label'>0.40</text>
+<text x='348.0' y='356' text-anchor='middle' class='label'>0.60</text>
+<text x='52' y='176.0' text-anchor='end' class='label'>0.60</text>
+<text x='444.0' y='356' text-anchor='middle' class='label'>0.80</text>
+<text x='52' y='120.0' text-anchor='end' class='label'>0.80</text>
+<text x='540.0' y='356' text-anchor='middle' class='label'>1.00</text>
+<text x='52' y='64.0' text-anchor='end' class='label'>1.00</text>
+<circle cx='401.2933286282004' cy='217.3721874011722' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='119.57533659792432' cy='233.63114897203474' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='420.2643231240851' cy='292.38115186421055' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='271.13655509359614' cy='210.9684335013208' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='170.59565945685037' cy='192.2962116037669' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='383.6604539566693' cy='118.61670481773402' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='282.67476904594656' cy='274.0364077521988' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='426.0135005487999' cy='170.30349723232473' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='227.0544501643768' cy='117.98462845157559' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='176.7989574325814' cy='75.06679211965599' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='207.8290510051231' cy='259.4395294489231' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='349.40217102202234' cy='161.46311866846108' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='174.41373768472343' cy='330.4320030056682' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='496.49164218903616' cy='335.42287407254116' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='318.77235043350356' cy='88.01000951429339' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='408.5772935286816' cy='72.93791263662598' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='302.55683952885295' cy='324.7872173445366' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='268.8658796485495' cy='62.72883505421299' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='474.16358022696835' cy='78.20586373930792' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='225.01405054114423' cy='306.6089289269466' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='267.56587540910857' cy='90.44012279324141' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='61.42662408661515' cy='279.50261641789876' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='349.07943493803936' cy='298.1670803969154' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='491.9799279663055' cy='273.5888046380785' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='416.75364243806473' cy='322.57221868632286' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='450.482232773757' cy='225.5512697413075' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='60.280557002078616' cy='329.3181327806962' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='282.59432446868624' cy='296.5984983948048' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='96.4839822266772' cy='141.70378076315765' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='232.84591328887615' cy='97.00332394641038' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='264.6269521992642' cy='137.624911876634' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='208.80672663141723' cy='239.36136252497863' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='479.8962188241434' cy='117.67893315788945' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='538.6941019526889' cy='309.5396620050574' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='529.6265669700069' cy='240.0573657935185' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='351.0053872419453' cy='227.98863495104786' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='135.00612365985035' cy='276.39849525947534' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='421.5379198202999' cy='126.17948977245709' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='120.64627600530152' cy='292.70190562791754' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='506.54229881872965' cy='178.3585092998194' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='219.40422429717967' cy='167.36035024562577' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='321.441027925391' cy='202.53922367408975' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='515.3364243177962' cy='143.28811757618917' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='392.2974088102561' cy='262.7564572038629' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='447.7570302294971' cy='146.42275855393368' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='535.0558310809864' cy='90.26141686650229' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='97.52006336106362' cy='65.04595685959237' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='479.34645249541677' cy='308.5652002991673' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='288.8759883442431' cy='171.48322527247822' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='351.0561702353548' cy='244.16740952442268' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='64.39547163245905' cy='203.58440512231618' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='66.49150131413631' cy='98.10448867410307' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='167.4797839406109' cy='271.2653294425543' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='151.04484940486262' cy='301.38541083443704' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='121.28688597945072' cy='106.49958244529438' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='382.3688158907201' cy='173.48137516062616' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='442.29929549727257' cy='284.06680242687645' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='449.8128610256812' cy='263.10029007854746' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='250.79801405366695' cy='237.58583492337328' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='167.59980561957207' cy='227.46385297520982' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='194.45084767884953' cy='148.67213214940398' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='68.74015890401412' cy='247.6212981849947' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='378.24318405913607' cy='99.79070772785926' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='293.9299466489296' cy='134.11998261872444' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='230.23561151024123' cy='62.980737122641244' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='352.3505381377749' cy='332.92412080167566' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='496.2037031590532' cy='221.17744927352234' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='332.48273788781296' cy='130.5529247446449' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='323.42819014903233' cy='260.2635114088645' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='395.3621789643985' cy='139.60777220361314' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='176.49566336237126' cy='113.4193680230743' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='120.43772510455997' cy='315.2638295911633' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='457.3401126514948' cy='240.87933773827177' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='217.09708064824162' cy='339.48360592993356' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='358.3967920025677' cy='202.65318943832395' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='343.0557805333519' cy='62.27380108311911' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='265.926613215119' cy='117.51047126052475' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='81.9259314013247' cy='174.87278870535738' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='343.19748642663063' cy='112.08407330360268' r='3.0' fill='#e94560' opacity='.8'/>
+<circle cx='147.8005635248641' cy='163.41008677647' r='3.0' fill='#e94560' opacity='.8'/>
+</svg>

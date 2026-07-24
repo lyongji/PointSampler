@@ -25,6 +25,17 @@ block filter_points_function:
   let f = filterPointsFunction(pts, fn)
   doAssert f.len == 2
 
+block filter_points_function_float32:
+  let pts = [
+    initPoint[float32, 2]([0f, 0f]),
+    initPoint[float32, 2]([1f, 1f]),
+    initPoint[float32, 2]([2f, 2f]),
+  ]
+  let fn = proc(p: Point[float32, 2]): float32 =
+    if p[0] + p[1] < 2.5f: 1f else: 0f
+  let f = filterPointsFunction(pts, fn)
+  doAssert f.len == 2
+
 block refit_points_to_range:
   var pts = @[
     initPoint[float, 2]([0.0, 0.0]),

@@ -29,7 +29,7 @@ proc nearestNeighborsIndices*[T; N: static[int]](
         if result[i].len == kNeighbors: break
 
 proc firstNeighborDistanceSquared*[T; N: static[int]](
-    points: var seq[Point[T, N]]): seq[T] =
+    points: openArray[Point[T, N]]): seq[T] =
   ## 计算每个点到最近邻的距离平方。
   let tree = initKDTree(points)
   result = newSeqOfCap[T](points.len)
@@ -73,13 +73,12 @@ proc angleDistributionNeighbors*[T; N: static[int]](
     for a in 0 ..< nn.len:
       for b in (a + 1) ..< nn.len:
         let (j, k) = (nn[a], nn[b])
-        var v1, v2: array[N, T]
-        for d in 0 ..< N: v1[d] = points[j][d] - p[d]; v2[d] = points[k][d] - p[d]
-        var dot: T = 0; var n1: T = 0; var n2: T = 0
-        for d in 0 ..< N:
-          dot += v1[d] * v2[d]; n1 += v1[d] ^ 2; n2 += v2[d] ^ 2
+        let v1 = points[j] - p
+        let v2 = points[k] - p
+        let n1 = lengthSquared(v1)
+        let n2 = lengthSquared(v2)
         if n1 > 0 and n2 > 0:
-          let cosTheta = clamp(dot / (sqrt(n1) * sqrt(n2)), -1.T, 1.T)
+          let cosTheta = clamp(dot(v1, v2) / sqrt(n1 * n2), -1.T, 1.T)
           let bin = (arccos(cosTheta) / binWidth).int
           if bin < nBins: g[bin] += 1.T
   let total = sum(g)

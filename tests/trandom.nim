@@ -37,4 +37,14 @@ block random_3d:
     doAssert p[0] >= 0.0 and p[0] <= 1.0
     doAssert p[2] >= -1.0 and p[2] <= 1.0
 
+block random_float32:
+  let pts = random[float32, 2](10, [(0f, 1f), (0f, 1f)])
+  doAssert pts.len == 10
+  for p in pts:
+    doAssert p[0] >= 0f and p[0] <= 1f
+
+block random_invalid_range:
+  doAssertRaises AssertionDefect:
+    discard random[float, 2](1, [(1.0, 0.0), (0.0, 1.0)])
+
 echo "  ✓ random tests"

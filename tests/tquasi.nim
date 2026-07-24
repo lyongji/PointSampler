@@ -41,4 +41,16 @@ block hammersley_3d:
   let pts = hammersley[float, 3](50, [(0.0, 1.0), (0.0, 1.0), (0.0, 1.0)])
   doAssert pts.len == 50
 
+block halton_float32:
+  let pts = halton[float32, 2](20, [(0f, 1f), (0f, 1f)])
+  doAssert pts.len == 20
+  for p in pts:
+    doAssert p[0] >= 0f and p[0] <= 1f
+
+block hammersley_float32:
+  let pts = hammersley[float32, 2](20, [(0f, 1f), (0f, 1f)])
+  doAssert pts.len == 20
+  for p in pts:
+    doAssert p[0] >= 0f and p[0] <= 1f
+
 echo "  ✓ Halton / Hammersley tests"
